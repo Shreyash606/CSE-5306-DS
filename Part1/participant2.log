@@ -1,8 +1,5 @@
 INFO:root:Participant2 connected to the coordinator.
 INFO:root:Participant2 recovered.
 INFO:root:Participant2 received prepare message and votes 'yes'.
-INFO:root:Participant2 voted: yes
-INFO:root:Participant2 connected to the coordinator.
-INFO:root:Participant2 recovered.
-INFO:root:Participant2 failed before receiving prepare message.
+INFO:root:Participant2 did not receive prepare message in time. Aborting.
 INFO:root:Participant2 voted: no

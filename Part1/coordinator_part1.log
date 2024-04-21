@@ -1,2 +1,4 @@
-INFO:root:Coordinator failed before sending prepare message.
-INFO:root:Coordinator failed before sending prepare message.
+INFO:root:Coordinator sending prepare message.
+INFO:root:Coordinator recovered. Sending prepare message again.
+INFO:root:Coordinator sending prepare message.
+INFO:root:Abort! Not all participants voted 'yes'.
