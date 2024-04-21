@@ -3,13 +3,13 @@ import random
 import time
 import logging
 
-logging.basicConfig(filename='coordinator_part2.log', level=logging.INFO)
+logging.basicConfig(filename='coordinator.log', level=logging.INFO)
 
 class Coordinator:
     def __init__(self, participants):
         self.participants = participants
 
-    def send_prepare_messages(self):
+    def send_prepare_message(self):
         # Simulate coordinator failure before sending prepare message
         if random.random() < 0.2:
             logging.info("Coordinator failed before sending prepare message.")
@@ -18,32 +18,28 @@ class Coordinator:
         logging.info("Coordinator sending prepare message.")
         return "prepare"
 
-    def receive_votes(self, participant_sockets):
+    def receive_votes(self):
         # Simulate coordinator recovery
         time.sleep(5)  # Simulating recovery time
         logging.info("Coordinator recovered. Sending prepare message again.")
 
         # Send prepare message again
-        prepare_message = self.send_prepare_messages()
+        prepare_message = self.send_prepare_message()
 
         # Receive votes from participants
         if prepare_message == "prepare":
             votes = []
-            for participant_socket in participant_sockets:
+            for participant_socket in self.participants:
                 vote = participant_socket.recv(1024).decode()
                 votes.append(vote)
 
-            if "yes" not in votes:
-                logging.info("Coordinator received 'no' vote from at least one participant. Aborting transaction.")
-                self.send_abort_messages(participant_sockets)  # Send abort messages
-                return False
+            return all(vote == "yes" for vote in votes)
 
-            return True
-
-    def send_abort_messages(self, participant_sockets):
-        for participant_socket in participant_sockets:
-            participant_socket.send("abort".encode())
-            logging.info("Coordinator sent 'abort' message to participant.")
+    def send_transaction_status(self, status):
+        # Send transaction status to participants
+        for participant_socket in self.participants:
+            participant_socket.send(status.encode())
+            logging.info(f"Coordinator sending {status} message to a participant.")
 
 if __name__ == "__main__":
     num_participants = int(input("Enter the number of participants: "))
@@ -57,17 +53,21 @@ if __name__ == "__main__":
 
     coordinator = Coordinator(participants)
 
-    # Phase 1: Coordinator sends prepare messages
-    prepare_message = coordinator.send_prepare_messages()
+    # Phase 1: Coordinator sends prepare message
+    prepare_message = coordinator.send_prepare_message()
 
     # Phase 2: Coordinator receives votes
     if prepare_message == "prepare":
-        all_votes = coordinator.receive_votes(participants)
+        all_votes = coordinator.receive_votes()
 
         if all_votes:
-            logging.info("All votes received: Yes. Committing the transaction.")
+            logging.info("All participants voted 'yes'. Committing the transaction.")
+            # Phase 3: Coordinator sends commit message
+            coordinator.send_transaction_status("commit")
         else:
-            logging.info("Abort! Not all participants voted 'yes'.")
+            logging.info("Abort! Not all participants voted 'yes'. Sending abort message.")
+            # Phase 3: Coordinator sends abort message
+            coordinator.send_transaction_status("abort")
 
     # Close participant sockets
     for participant_socket in participants:

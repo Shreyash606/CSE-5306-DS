@@ -1,5 +1,5 @@
 INFO:root:Participant2 connected to the coordinator.
 INFO:root:Participant2 recovered.
 INFO:root:Participant2 received prepare message and votes 'yes'.
-INFO:root:Participant2 received commit message. Committing the transaction.
-INFO:root:Participant2 voted: committed
+INFO:root:Participant2 received abort message. Abort!
+INFO:root:Participant2 status: aborted

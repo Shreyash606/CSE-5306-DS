@@ -1,0 +1,6 @@
+INFO:root:Coordinator sending prepare message.
+INFO:root:Coordinator recovered. Sending prepare message again.
+INFO:root:Coordinator failed before sending prepare message.
+INFO:root:Abort! Not all participants voted 'yes'. Sending abort message.
+INFO:root:Coordinator sending abort message to a participant.
+INFO:root:Coordinator sending abort message to a participant.
