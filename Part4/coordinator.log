@@ -1,0 +1,15 @@
+INFO:root:Coordinator sending prepare message.
+INFO:root:Coordinator recovered. Sending prepare message again.
+INFO:root:Coordinator failed before sending prepare message.
+INFO:root:Abort! Not all participants voted 'yes'.
+INFO:root:Coordinator sending prepare message.
+INFO:root:Coordinator recovered. Sending prepare message again.
+INFO:root:Coordinator sending prepare message.
+INFO:root:Abort! Not all participants voted 'yes'.
+INFO:root:Coordinator sending prepare message.
+INFO:root:Coordinator recovered. Sending prepare message again.
+INFO:root:Coordinator sending prepare message.
+INFO:root:All participants voted 'yes'. Committing the transaction.
+INFO:root:Storing transaction information on disk.
+INFO:root:Coordinator sending commit message to a participant.
+INFO:root:Coordinator sending commit message to a participant.

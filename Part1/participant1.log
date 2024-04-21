@@ -1,0 +1,9 @@
+INFO:root:Participant1 connected to the coordinator.
+INFO:root:Participant1 recovered.
+INFO:root:Participant1 failed before receiving prepare message.
+INFO:root:Participant1 voted: no
+INFO:root:Participant1 connected to the coordinator.
+INFO:root:Participant1 recovered.
+INFO:root:Participant1 received prepare message and votes 'yes'.
+INFO:root:Participant1 received response from coordinator: 
+INFO:root:Participant1 voted: 

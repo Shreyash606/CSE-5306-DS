@@ -1,0 +1,13 @@
+INFO:root:Participant1 connected to the coordinator.
+INFO:root:Participant1 recovered.
+INFO:root:Participant1 received prepare message and votes 'yes'.
+INFO:root:Participant1 connected to the coordinator.
+INFO:root:Participant1 recovered.
+INFO:root:Participant1 received prepare message and votes 'yes'.
+INFO:root:Participant1 did not receive commit message. Abort!
+INFO:root:Participant1 voted: aborted
+INFO:root:Participant1 connected to the coordinator.
+INFO:root:Participant1 recovered.
+INFO:root:Participant1 received prepare message and votes 'yes'.
+INFO:root:Participant1 received commit message. Committing the transaction.
+INFO:root:Participant1 voted: committed
